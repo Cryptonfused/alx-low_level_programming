@@ -28,7 +28,6 @@ void print_number(int n)
 			c *= 10;
 			l /= 10;
 		}
-		printf("values of l and c are %d, %d respectively.\n", l, c);
 
 		while (c > 0)
 		{
