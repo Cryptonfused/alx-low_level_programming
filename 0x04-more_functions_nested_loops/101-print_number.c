@@ -1,44 +1,40 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * print_number - Prints an integer.
+ *
  * @n: The integer to be printed.
  */
 void print_number(int n)
 {
-	int is_negative = 0;
+	int l, c = 1;
 
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
-		is_negative = 1;
 	}
 
-	int reversed_number = 0;
-
-	while (n > 0)
-	{
-		reversed_number = reversed_number * 10 + n % 10;
-		n /= 10;
-	}
-
-	if (reversed_number == 0)
-	{
+	if (n == 0)
 		_putchar('0');
-	}
+	else if (n < 10)
+		_putchar(n + '0');
 	else
 	{
-		while (reversed_number > 0)
+		l = n;
+		while (l / 10 > 0)
 		{
-			_putchar((reversed_number % 10) + '0');
-			reversed_number /= 10;
+			c *= 10;
+			l /= 10;
+		}
+		printf("values of l and c are %d, %d respectively.\n", l, c);
+
+		while (c > 0)
+		{
+			_putchar((n / c) + '0');
+			n %= c;
+			c /= 10;
 		}
 	}
-
-	if (is_negative)
-	{
-		_putchar('-');
-	}
 }
-
