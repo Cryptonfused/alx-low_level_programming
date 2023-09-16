@@ -1,20 +1,20 @@
 #include <stdio.h>
 
 /**
- * largest_prime_factor - finds the largest prime factor of a number
- * @n: the number to find the largest prime factor of
+ * main - staring point of prog exec
  *
- * Return: the largest prime factor of n
+ * Return: 0 if successful otherwise :-(
  */
-long largest_prime_factor(long n)
+int main(void)
 {
+	long number = 612852475143;
 	long factor = 2;
 
-	while (n > factor)
+	while (number > factor)
 	{
-		if (n % factor == 0)
+		if (number % factor == 0)
 		{
-			n = n / factor;
+			number = number / factor;
 			factor = 2;
 		}
 		else
@@ -23,5 +23,7 @@ long largest_prime_factor(long n)
 		}
 	}
 
-	return (n);
+	printf("%ld\n", number);
+
+	return (0);
 }
