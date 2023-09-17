@@ -8,8 +8,8 @@
  */
 void print_number(int n)
 {
-	unsigned int m = 1;
-	int l = n;
+	int m = 1;
+	unsigned int l = n;
 	int b;
 
 	if (n < 0)
