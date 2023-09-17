@@ -8,32 +8,33 @@
  */
 void print_number(int n)
 {
-	unsigned int l, c = 1;
+	int l = n;
+	int b, m = 1;
 
-	if (n < 0)
+	if (l < 0)
 	{
 		_putchar('-');
-		n = -n;
+		l = -l;
 	}
 
-	if (n == 0)
+	if (l == 0)
 		_putchar('0');
-	else if (n < 10)
-		_putchar(n + '0');
+	else if (l < 10)
+		_putchar(l + '0');
 	else
 	{
-		l = n;
-		while (l / 10 > 0)
+		b = l;
+		while (b / 10 > 0)
 		{
-			c *= 10;
-			l /= 10;
+			m *= 10;
+			b /= 10;
 		}
 
-		while (c > 0)
+		while (m > 0)
 		{
-			_putchar((n / c) + '0');
-			n %= c;
-			c /= 10;
+			_putchar((l / m) + '0');
+			l %= m;
+			m /= 10;
 		}
 	}
 }
