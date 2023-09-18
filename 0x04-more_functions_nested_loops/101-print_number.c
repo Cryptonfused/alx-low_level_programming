@@ -33,7 +33,7 @@ void print_number(int n)
 
 		while (m > 0)
 		{
-			_putchar(unsgined int (l / m) + '0');
+			_putchar((unsigned int) (l / m) + '0');
 			l %= m;
 			m /= 10;
 		}
