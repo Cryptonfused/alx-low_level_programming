@@ -1,55 +1,50 @@
+#include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 /**
- * infinite_add - Adds two numbers represented as strings.
- * @n1: The first number as a string.
- * @n2: The second number as a string.
- * @r: The buffer to store the result.
- * @size_r: The size of the buffer.
+ * print_buffer - Prints the content of a buffer.
+ * @b: The buffer to print.
+ * @size: The number of bytes to print.
  *
- * Return: A pointer to the result buffer, or 0 if the result doesn't fit.
+ * Description: This function prints the content of the buffer in the specified
+ * format, including hexadecimal representation and printable characters.
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+void print_buffer(char *b, int size)
 {
-	int start, len1 = strlen(n1), i, j, k = 0;
-	int carry, len2 = strlen(n2), sum, d1, d2, end;
-	char temp;
+	int i, j;
 
-	if (size_r <= len1 || size_r <= len2)
-		return (0); /* Result can't fit in the buffer */
-
-	i = len1 - 1;
-	j = len2 - 1;
-
-	carry = 0;
-	while (i >= 0 || j >= 0 || carry)
+	if (size <= 0)
 	{
-		d1 = (i >= 0) ? n1[i] - '0' : 0;
-		d2 = (j >= 0) ? n2[j] - '0' : 0;
-		sum = d1 + d2 + carry;
-
-		carry = sum / 10;
-
-		r[k] = (sum % 10) + '0';
-		k++;
-
-		i--;
-		j--;
+		printf("\n");
+		return;
 	}
-	r[k] = '\0';
-	end = k - 1;
 
-	start = 0;
-	while (start < end)
+	for (i = 0; i < size; i += 10)
 	{
-		temp = r[start];
+		printf("%08x: ", i);
 
-		r[start] = r[end];
-		r[end] = temp;
-		start++;
-		end--;
+		for (j = i; j < i + 10; j++)
+		{
+			if (j < size)
+				printf("%02x", b[j]);
+			else
+				printf("  ");
+
+			if (j % 2 == 1)
+				printf(" ");
+		}
+
+		printf(" ");
+		for (j = i; j < i + 10; j++)
+		{
+			if (j < size)
+			{
+				if (b[j] >= 32 && b[j] <= 126)
+					printf("%c", b[j]);
+				else
+					printf(".");
+			}
+		}
+		printf("\n");
 	}
-	return (r);
 }
